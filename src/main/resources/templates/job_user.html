@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorator="layout/layout">
+<meta charset="UTF-8">
+<title>业务员设置</title>
+<body>
+<!--user biz settings-->
+<li layout:fragment="userBiz" class="active">
+    <a href="job_user.html">
+        <i class="menu-icon fa fa-users"></i>
+        <span class="menu-text">业务员</span>
+    </a>
+    <b class="arrow"></b>
+</li>
+<div layout:fragment="content" class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+                <li class="active">业务员设置</li>
+            </ul><!-- /.breadcrumb -->
+        </div>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    业务人员设置
+                </h1>
+            </div><!-- /.page-header -->
+          <<form class="form-horizontal" id="jobFrom" enctype="multipart/form-data">
+                <div id="user-profile-1" class="user-profile row">
+                    <div class="col-xs-12 col-sm-3 right">
+                        <div class="form-group">
+                        <span class="profile-picture">
+                                <input id="upfile" class="editable img-responsive editable-click editable-empty"
+                                       type="file" name="file" onchange="viewmypic(showimg,this.form.upfile)"/>
+                                 <img name="showimg" id="showimg" src="" style="display:none;height: 100px; width: 80px;" alt="预览图片" />
+
+                          <!--  <div style="display:none;" ></div>-->
+                        </span>
+
+                            <div class="space-4"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 left">
+                        <div class="form-group">
+                            <label for="job_user_name" class="col-sm-2 control-label">姓名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="job_user_name" name="job_user_name"
+                                       placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="job_user_sex" class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="job_user_sex" name="job_user_sex">
+                                    <option value=0>男</option>
+                                    <option value=1>女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="job_user_num" class="col-sm-2 control-label">编号</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="job_user_num" name="job_user_num"
+                                       placeholder="编号">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <button id="submit" class="btn btn-sm btn-success" type="button" onclick="doAddAdmin()">
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                提交
+                            </button>
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn btn-sm btn-info" type="reset">
+                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                重置
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr dotted"></div>
+            </form>
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
+
+<th:block layout:fragment="pluginScript">
+    <script th:src="@{assets/js/jquery.dataTables.min.js}"></script>
+    <script th:src="@{assets/js/jquery.dataTables.bootstrap.min.js}"></script>
+    <script th:src="@{assets/js/dataTables.buttons.min.js}"></script>
+    <script th:src="@{assets/js/dataTables.select.min.js}"></script>
+    <script th:src="@{assets/js/bootstrap-editable.min.js}"></script>
+    <script th:src="@{assets/js/ace-editable.min.js}"></script>
+</th:block>
+
+<th:block layout:fragment="selfScript">
+    <script language="JavaScript">
+
+        function viewmypic(mypic,upfile) {
+            if(upfile.files && upfile.files[0])
+            {
+                mypic.style.display="";
+               //火狐下，直接设img属性
+               //mypic.src = upfile.files[0].getAsDataURL();
+                //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+                mypic.src = window.URL.createObjectURL(upfile.files[0]);
+            }
+            else
+            {
+                  //IE下
+                if (upfile.value){
+                    mypic.src=upfile.value;
+                    mypic.style.display="";
+                    mypic.border=1;
+                }
+            }
+        }
+
+        function doAddAdmin() {
+            var forData = new FormData($('#jobFrom').get(0));
+            $.ajax({
+                type: "POST",
+                url: root.servicePath + "/queue/user/addUserInfo",
+                data:forData,
+                async:true,
+                cache:false,
+                contentType:false,
+                processData:false,
+                success: function (result) {
+                    if (result.message == "ok") {
+                        alert("添加成功！");
+                        table.ajax.reload();
+                        $('#jobFrom input').val("");
+                    }
+                },
+                error: function () {
+                    alert("添加失败");
+                }
+            })
+        }
+    </script>
+</th:block>
+
+</body>
+</html>

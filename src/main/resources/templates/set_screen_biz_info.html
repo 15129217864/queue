@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/layout">
+<meta charset="UTF-8"/>
+<title>业务屏设置</title>
+<body>
+<li layout:fragment="basSet" class="active open">
+    <a href="#" class="dropdown-toggle">
+        <i class="menu-icon fa fa-list"></i>
+        <span class="menu-text">基础设置</span>
+
+        <b class="arrow fa fa-angle-down"></b>
+    </a>
+    <b class="arrow"></b>
+    <ul class="submenu">
+        <li class="">
+            <a href="base_biz.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                基础业务设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+        <li class="active">
+            <a href="/set_screen_biz_info.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                业务屏设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="/set_screen_info.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                条屏设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="/upload.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                背景图设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="/background.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                背景图设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+    </ul>
+</li>
+
+<div layout:fragment="content" class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">基础设置</a>
+                </li>
+                <li class="active">业务屏设置</li>
+            </ul><!-- /.breadcrumb -->
+        </div>
+
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form id="bizScreenFrom" class="form-horizontal" role="form" action="">
+                        <div class="form-group">
+                            <div class="col-xs-9">
+                                <span class="input-icon input-icon-right">
+                                     业务屏IP：
+                                     <input type="text" name="biz_screen_ip" placeholder="业务屏IP" id="bizScreenIp">
+                                     <i class="ace-icon fa fa-laptop green"></i>
+                                 </span>
+                                <span class="select-icon select-icon-right">
+                                    业务员：
+								    <select class="ace-icon fa fa-laptop" id="jobUser" name="job_user_id">
+
+                                    </select>
+							    </span>
+                                <span class="select-icon select-icon-right">
+                                    基础业务：
+                                    <select class="ace-icon fa fa-laptop" id="base_biz_id" name="base_biz_id">
+                                    </select>
+							    </span>
+                                &nbsp; &nbsp; &nbsp;
+                                <button id="submitAdd" class="btn btn-sm btn-success" type="button">
+                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                    添加
+                                </button>
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn btn-sm btn-info" type="reset">
+                                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                                    重置
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="clearfix">
+                    <div class="pull-right tableTools-container">
+                        <div class="dt-buttons btn-overlap btn-group">
+                            <a id="setScreenBizInfo"
+                               class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold">
+                                <span><i class="fa fa-cogs bigger-110 orange"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataTables_wrapper form-inline no-footer">
+                    <!-- thymeleaf-->
+                    <table id="example"
+                           class="table table-striped table-bordered table-hover no-margin-bottom no-border-top "
+                           style="width:100%">
+                        <thead>
+                        <tr class="one">
+                            <th><input type="checkbox" id="checkbox_all" value="all"/></th>
+                            <th th:text="编号" class="strm"></th>
+                            <th th:text="基础业务"></th>
+                            <th th:text="业务员"></th>
+                            <th th:text="业务屏IP"></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- 模态框（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <form class="form-horizontal" id="modalForm" action="">
+                    <div class="modal-content"><!---->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">业务屏设置</h4>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="biz_screen_id" name="biz_screen_id"
+                                           placeholder="编号" type="hidden">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">基础业务</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="bizBase2" name="base_biz_id">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">业务员</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="jobUser2" name="job_user_id">
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">业务屏IP</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="bizScreenIp2" name="biz_screen_ip"
+                                           placeholder="业务屏IP">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button id="submit" class="btn btn-sm btn-success" type="button" data-dismiss="modal">
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                提交
+                            </button>
+                            <button class="btn btn-sm btn-info" type="reset" data-dismiss="modal">
+                                <i class="ace-icon glyphicon glyphicon-remove bigger-110"></i>
+                                关闭
+                            </button>
+                        </div>
+                    </div><!---->
+                </form>
+            </div> <!--modal -->
+        </div>
+
+    </div><!-- /.page-content -->
+</div>
+</div><!-- /.main-content -->
+
+
+<th:block layout:fragment="pluginScript">
+    <script th:src="@{assets/js/jquery.dataTables.min.js}"></script>
+    <script th:src="@{assets/js/jquery.dataTables.bootstrap.min.js}"></script>
+    <script th:src="@{assets/js/dataTables.buttons.min.js}"></script>
+    <script th:src="@{assets/js/dataTables.select.min.js}"></script>
+</th:block>
+
+<th:block layout:fragment="selfScript">
+    <script language="JavaScript">
+        $(document).ready(function () {
+            var table = $('#example').DataTable({
+                searching: false,//取消搜索
+                bLengthChange: false,//去掉提示多少页
+                language: {
+                    sEmptyTable: "表中数据为空",
+                    sLoadingRecords: "加载中...",
+                    sInfo: "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                    paginate: {
+                        first: "首页",
+                        previous: "上页",
+                        next: "下页",
+                        last: "末页"
+                    }
+                },
+                ajax: {
+                    url: root.servicePath + "/queue/baseConf/queryBizScreen",
+                    type: "POST",
+                    dataSrc: "restData"
+                },
+                columns: [
+                    {
+                        data: null,
+                        orderable: false
+                    },
+                    {
+                        data: "biz_screen_id",
+                        title: "编号"
+                    },
+                    {
+                        data: "baseBiz.base_biz_name",
+                        title: "基础业务"
+                    },
+                    {
+                        data: "jobUser.job_user_name",
+                        title: "业务员",
+                        render: function (data, type, row) {
+                            if (data != null) {
+                                return data;
+                            } else {
+                                return "";
+                            }
+                        }
+                    },
+                    {
+                        data: "biz_screen_ip",
+                        title: "业务屏IP"
+                    }
+                ],
+                columnDefs: [
+                    {
+                        orderable: false,
+                        targets: 0,
+                        className: 'select-checkbox',
+                        render: function (data, type, row, meta) {
+                            return data = '<input type="checkbox" value="' + meta.row + '"/>';
+                        }
+                    },
+                    {
+                        targets: 5,
+                        data: null,
+                        orderable: false,
+                        defaultConten5t: "",
+                        width: "20%",
+                        render: function (data, type, row, meta) {
+                            return data = '<button class="btn btn-info btn-xs edit"   data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i></button>&nbsp; &nbsp;'
+                                + '<button class="btn btn-danger btn-xs " id="del" ><i class="fa fa-trash-o"></i></button>';
+                        }
+                    }
+                ]
+            });
+            // add screen set info onclick="funDel(this)"
+            $('#submitAdd').click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: root.servicePath + "/queue/baseConf/addBizScreen",
+                    data: $('#bizScreenFrom').serialize(),
+                    contentType: "application/x-www-form-urlencoded",
+                    success: function (result) {
+                        if (result == "true") {
+                            alert("添加成功！");
+                            table.ajax.reload();
+                            $('#bizScreenFrom input').val("");
+                        }
+                    },
+                    error: function () {
+                        alert("添加失败");
+                    }
+                })
+
+            });
+
+            //给模态框绑定数据
+            $.ajax({
+                url: root.servicePath + "/queue/baseConf/queryBizScreen",
+                type: "POST",
+                dataSrc: "restData",
+                success: function (data) {
+                    $("#example .edit").each(function (index, elem) {
+                        $(this).on("click", function (e) {
+                            $("#bizScreenIp2").val(data.restData[index].biz_screen_ip);
+                            $("#biz_screen_id").val(data.restData[index].biz_screen_id);
+                        })
+                    })
+                }
+            });
+            //修改
+            $('#submit').click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: root.servicePath + "/queue/baseConf/updateBizScreen",
+                    data: $('#modalForm').serialize(),
+                    contentType: "application/x-www-form-urlencoded",
+                    success: function (result) {
+                        if (result.message == "ok") {
+                            alert("修改成功！");
+                          //  table.ajax.reload();
+                            window.location.reload();
+                        }
+                    },
+                    error: function () {
+                        alert("修改失败");
+                    }
+                })
+
+            });
+
+            // 设置推送
+            $("#setScreenBizInfo").bind("click", function () {
+                var bizScreenIdList = new Array();
+                var checkedCount = 0;
+                $("input[type='checkbox']").each(function () {
+                    var stateChild = $(this).is(":checked");
+                    var isFirstCheckbox = $(this).val();
+                    if (stateChild && isFirstCheckbox != "all") {
+                        var rowIndex = $(this).val();
+                        var checkedData = table.row(rowIndex).data();
+                        bizScreenIdList.push(checkedData.biz_screen_id);
+                        ++checkedCount;
+                        // 选择数据 data tables 数据
+                    }
+                });
+                // check checkbox is checked.
+                if (checkedCount > 0) {
+                    // 请求推送业务屏数据
+                    var BaseScreenWrapper = new Object();
+                    BaseScreenWrapper.bizScreenIdList = bizScreenIdList;
+                    $.ajax({
+                        type: "post",
+                        url: root.servicePath + "/queue/baseConf/settingsBizScreen",
+                        data: JSON.stringify(BaseScreenWrapper),
+                        contentType: "application/json;charset=utf-8;",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data || data == "true") {
+                                alert('共设置【' + checkedCount + '】业务数据！');
+                            } else {
+                                alert("设置业务数据失败！");
+                            }
+                        },
+                        error: function (error) {
+                            alert("error=" + error);
+                        }
+                    });
+                } else {
+                    alert("请选择一笔推送数据！");
+                }
+            });
+            //删除
+            table.on('click', '#del', function () {
+                var trData = table.row($(this).parents('tr')).data();
+                if (confirm('确认删除该条数据?')) {
+                    var bizScreenId = trData.biz_screen_id;
+                    $.get(root.servicePath + '/queue/baseConf/clearBizScreen?id=' + bizScreenId + '',
+                        function (result) {
+                            if (result.message == "ok") {
+                                alert('删除成功');
+                                table.ajax.reload();
+                            } else {
+                                alert("删除失败");
+                            }
+                        })
+                }
+            });
+        });
+        // checkbox selected
+        $("#checkbox_all").bind("click", function () {
+            var state = $(this).is(":checked");
+            if (state) {
+                $("input[type='checkbox']").each(function () {
+                    var stateChild = $(this).is(":checked");
+                    if (!stateChild) {
+                        $(this).prop("checked", true);
+                    }
+                })
+            } else {
+                $("input[type='checkbox']").each(function () {
+                    var stateChild = $(this).is(":checked");
+                    if (stateChild) {
+                        $(this).prop("checked", false);
+                    }
+                })
+            }
+        });
+        // 下拉框
+        $(function () {
+            $.ajax({
+                url: root.servicePath + "/queue/user/getBaseUserInfo",
+                type: "GET",
+                success: function (dt) {
+                    $("#jobUser2").append("<option>请选择</option>");
+                    for (var i = 0; i < dt.length; i++) {
+                        $("#jobUser2").append("<option value=" + dt[i].job_user_id + ">" + dt[i].job_user_name + "</option>");
+                    }
+                    $("#jobUser").append("<option>请选择</option>");
+                    for (var i = 0; i < dt.length; i++) {
+                        $("#jobUser").append("<option value=" + dt[i].job_user_id + ">" + dt[i].job_user_name + "</option>");
+                    }
+                }
+            });
+
+        });
+        $(function () {
+            $.ajax({
+                url: root.servicePath + "/queue/biz/getAllBaseBizInfo",
+                type: "GET",
+                success: function (dt) {
+                    $("#bizBase2").append("<option>请选择</option>");
+                    for (var i = 0; i < dt.restData.length; i++) {
+                        $("#bizBase2").append("<option value=" + dt.restData[i].base_biz_id + ">" + dt.restData[i].base_biz_name + "</option>");
+                    }
+                    $("#base_biz_id").append("<option>请选择</option>");
+                    for (var i = 0; i < dt.restData.length; i++) {
+                        $("#base_biz_id").append("<option value=" + dt.restData[i].base_biz_id + ">" + dt.restData[i].base_biz_name + "</option>");
+                    }
+                }
+            });
+
+        });
+    </script>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xct.media.queuing.mapper.TransactBizRecordMapper">
+    <resultMap id="transactBizRecord" type="com.xct.media.queuing.pojo.bo.TransactBizRecordBo">
+        <id column="transact_biz_id" property="transact_biz_id"/>
+        <result column="id_card" property="id_card"/>
+        <result column="use_name" property="use_name"/>
+        <result column="use_sex" property="use_sex"/>
+        <result column="use_photo" property="use_photo"/>
+        <result column="use_birty" property="use_birty"/>
+        <result column="use_addr" property="use_addr"/>
+        <result column="screen_num" property="screen_num"/>
+        <result column="biz_name" property="biz_name"/>
+        <result column="queue_num" property="queue_num"/>
+        <result column="use_current_photo" property="use_current_photo"/>
+        <result column="transact_biz_date" property="transact_biz_date"/>
+        <result column="hidden" property="hidden"/>
+    </resultMap>
+
+    <sql id="stripedScreenInfo_col">
+        transact_biz_id,
+        id_card,
+        use_name,
+        use_sex,
+        use_photo,
+        use_birty,
+        use_addr,
+        screen_num,
+        biz_name,
+        queue_num,
+        use_current_photo,
+        transact_biz_date
+    </sql>
+
+
+    <insert id="setTransactBizRecord" useGeneratedKeys="true" keyProperty="transact_biz_id">
+        INSERT INTO
+        evaluate_sys.transact_biz_record
+        (id_card,
+        use_name,
+        use_sex,
+        use_photo,
+        use_birty,
+        use_addr,
+        screen_num,
+        biz_name,
+        queue_num,
+        use_current_photo)
+        VALUES (
+        #{id_card},
+        #{use_name},
+        #{use_sex},
+        #{use_photo},
+        #{use_birty},
+        #{use_addr},
+        #{screen_num},
+        #{biz_name},
+        #{queue_num},
+        #{use_current_photo})
+    </insert>
+
+
+    <select id="queryByTransactBizRecordInfo" resultMap="transactBizRecord">
+        SELECT
+        <include refid="stripedScreenInfo_col"/>
+        FROM evaluate_sys.transact_biz_record
+        WHERE transact_biz_id = #{transact_biz_id}
+    </select>
+
+
+    <select id="queryTransactBizRecordSet" resultMap="transactBizRecord">
+        SELECT
+        <include refid="stripedScreenInfo_col"/>
+        FROM evaluate_sys.transact_biz_record
+        <where>
+            <if test="transact_biz_id > 0">
+                transact_biz_id = #{transact_biz_id}
+            </if>
+        </where>
+    </select>
+
+</mapper>

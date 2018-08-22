@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xct.media.queuing.mapper.JobUserMapper">
+
+    <resultMap id="jobUser" type="com.xct.media.queuing.pojo.bo.JobUserBo">
+        <id column="job_user_id" property="job_user_id"/>
+        <result column="job_user_name" property="job_user_name"/>
+        <result column="job_user_sex" property="job_user_sex"/>
+        <result column="job_user_num" property="job_user_num"/>
+        <result column="job_user_photo" property="job_user_photo"/>
+        <result column="hidden" property="hidden"/>
+    </resultMap>
+
+
+    <sql id="job_user_col">
+        job_user_id,
+        job_user_name,
+        job_user_sex,
+        job_user_num,
+        job_user_photo,
+        hidden
+    </sql>
+
+
+    <insert id="setJobUser" useGeneratedKeys="true" keyProperty="job_user_id">
+        INSERT INTO
+        evaluate_sys.job_user
+        (job_user_name, job_user_sex, job_user_num, job_user_photo)
+        VALUES
+        (#{job_user_name}, #{job_user_sex}, #{job_user_num}, #{job_user_photo})
+    </insert>
+
+
+    <select id="queryByJobUser" resultMap="jobUser">
+        SELECT
+        <include refid="job_user_col"/>
+        FROM evaluate_sys.job_user
+        WHERE job_user_id = #{job_user_id}
+    </select>
+
+
+    <select id="queryJobUserSet" resultMap="jobUser">
+        SELECT
+        <include refid="job_user_col"/>
+        FROM evaluate_sys.job_user
+        <where>
+            <if test="job_user_id > 0">
+                job_user_id = #{job_user_id}
+            </if>
+            <if test="hidden == 1">
+                and hidden = 1
+            </if>
+        </where>
+
+    </select>
+    <update id="updateJobUser">
+        UPDATE evaluate_sys.job_user
+        <set>
+            <if test="job_user_num !=null">
+                job_user_num = #{job_user_num },
+            </if>
+            <if test="job_user_photo !=null">
+                job_user_photo=#{job_user_photo},
+            </if>
+            <if test="job_user_name !=null">
+                job_user_name =#{job_user_name},
+            </if>
+            <if test="job_user_sex !=null">
+                job_user_sex =#{job_user_sex}
+            </if>
+            <if test="hidden == 0">
+                hidden = 0
+            </if>
+        </set>
+        WHERE
+        job_user_id =#{job_user_id}
+    </update>
+
+</mapper>

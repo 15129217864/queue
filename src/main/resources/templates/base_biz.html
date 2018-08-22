@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/layout">
+<meta charset="UTF-8">
+<title>基础业务设置</title>
+<link rel="stylesheet" th:href="@{~/css/jquery.dataTables.min.css}"/>
+<body>
+<li layout:fragment="basSet" class="active open">
+    <a href="#" class="dropdown-toggle">
+        <i class="menu-icon fa fa-list"></i>
+        <span class="menu-text">基础设置</span>
+
+        <b class="arrow fa fa-angle-down"></b>
+    </a>
+    <b class="arrow"></b>
+    <ul class="submenu">
+        <li class="active">
+            <a href="/base_biz.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                基础业务设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="/set_screen_biz_info.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                业务屏设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="/set_screen_info.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                条屏设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="/upload.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                背景图设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="/background.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                背景图设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+    </ul>
+</li>
+
+<div layout:fragment="content" class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">基础设置</a>
+                </li>
+                <li class="active">基础业务设置</li>
+            </ul><!-- /.breadcrumb -->
+        </div>
+
+        <div class="page-content">
+            <!--写自己的业务代码-->
+            <div class="row">
+                <div class="col-xs-12">
+                    <form id="baseBizAdd" class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <div class="col-xs-9">
+                                 <span class="input-icon input-icon-right">
+                                     业务名称：
+                                     <input type="text" name="bizName" placeholder="窗口业务名称" id="bizName">
+                                     <i class="ace-icon fa fa-laptop green"></i>
+                                 </span>
+                                <span class="input-icon input-icon-right">
+                                    业务编号：
+								    <input type="text" name="bizNum" placeholder="窗口业务编号" id="bizNum">
+								    <i class="ace-icon fa fa-laptop green"></i>
+							    </span>
+                                &nbsp; &nbsp; &nbsp;
+                                <button id="submitAdd" class="btn btn-sm btn-success" type="button">
+                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                    添加
+                                </button>
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn btn-sm btn-info" type="reset">
+                                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                                    重置
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <!-- thymeleaf-->
+                <table id="example"
+                       class="table table-striped table-bordered table-hover "
+                       style="width:100% ">
+                    <thead>
+                    <tr>
+                        <th th:text="编号"></th>
+                        <th th:text="业务名称"></th>
+                        <th th:text="业务编号"></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <!-- 模态框（Modal） -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <form class="form-horizontal" id="modalForm" action="">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">&times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">基础业务设置</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="bizId2" name="base_biz_id"
+                                               placeholder="编号" type="hidden">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">业务名称</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="bizName2" name="base_biz_name"
+                                               placeholder="业务名称">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">业务编号</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="bizNum2" name="base_biz_num"
+                                               placeholder="业务编号">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="submit" class="btn btn-sm btn-success" data-dismiss="modal" type="button">
+                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                    提交
+                                </button>
+                                <button class="btn btn-sm btn-info" type="reset" data-dismiss="modal">
+                                    <i class="ace-icon glyphicon glyphicon-remove bigger-110"></i>
+                                    关闭
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div> <!--modal -->
+            </div>
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
+
+
+<th:block layout:fragment="pluginScript">
+    <script th:src="@{assets/js/jquery.dataTables.min.js}"></script>
+    <script th:src="@{assets/js/jquery.dataTables.bootstrap.min.js}"></script>
+    <script th:src="@{assets/js/dataTables.buttons.min.js}"></script>
+    <script th:src="@{assets/js/dataTables.select.min.js}"></script>
+</th:block>
+
+<th:block layout:fragment="selfScript">
+    <!--your self script-->
+    <script language="JavaScript">
+        $(document).ready(function () {
+
+            var tabl = $('#example').DataTable({
+                searching: false,//取消搜索
+                bLengthChange: false,//去掉提示多少页
+                language: {
+//                    sLoadingRecords: "载入中...",
+                    sInfo: "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                    paginate: {//分页的样式文本内容。
+                        first: "首页",
+                        previous: "上页",
+                        next: "下页",
+                        last: "末页"
+                    }
+                },
+                ajax: {
+                    url: root.servicePath + "/queue/biz/getAllBaseBizInfo",
+                    dataSrc: "restData"
+                },
+                columns: [
+                    {
+                        data: "base_biz_id",
+                        title: "编号"
+                    },
+                    {
+                        data: "base_biz_name",
+                        title: "业务名称"
+                    },
+                    {
+                        data: "base_biz_num",
+                        title: "业务编号"
+                    }
+                ],
+                columnDefs: [
+                    {
+                        targets: 3,
+                        data: null,
+                        orderable: false,
+                        defaultContent: "",
+                        width: "20%",
+                        render: function (data, type, row, meta) {
+                            return data = '<button class="btn btn-info btn-xs "  id="edit" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i></button>&nbsp; &nbsp;'
+                                + '<button class="btn btn-danger btn-xs " id="del"><i class="fa fa-trash-o"></i></button>';
+                        }
+                    }
+                ],
+                select: true,
+                buttons: [
+                    {
+                        extend: "设置基本信息"
+                    }
+                ]
+            });
+
+            //模态框绑定数据
+            tabl.on('click', '#edit', function () {
+                var trData = tabl.row($(this).parents('tr')).data();
+                $("#bizId2").val(trData.base_biz_id);
+                $("#bizName2").val(trData.base_biz_name);
+                $("#bizNum2").val(trData.base_biz_num);
+            });
+            //修改
+            $('#submit').click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: root.servicePath + "/queue/biz/updateBaseBiz",
+                    data: $('#modalForm').serialize(),
+                    contentType: "application/x-www-form-urlencoded",
+                    success: function (result) {
+                        if (result.message == "ok") {
+                            alert("修改成功！");
+                            tabl.ajax.reload();
+                        }
+                    },
+                    error: function () {
+                        alert("修改失败");
+                    }
+                })
+
+            });
+            //删除
+            tabl.on('click', '#del', function () {
+                var trData = tabl.row($(this).parents('tr')).data();
+                if (confirm('确认删除该条数据?')) {
+                    var baseBizId = trData.base_biz_id;
+                    $.get(root.servicePath + '/queue/biz/clear?id=' + baseBizId + '', function (result) {
+                        if (result.message == "ok") {
+                            alert('删除成功');
+                            tabl.ajax.reload();
+                        } else {
+                            alert("删除失败");
+                        }
+                    })
+                }
+            });
+            //添加事件
+            $("#submitAdd").click(function () {
+                $.post(
+                    root.servicePath + "/queue/biz/saveBaseBiz",
+                    {
+                        "bizName": $("#bizName").val(),
+                        "bizNum": $("#bizNum").val()
+                    },
+                    function (result) {
+                        if (result.message == "ok") {
+                            alert("添加成功！");
+                            tabl.ajax.reload();
+                            $('#baseBizAdd input').val("");
+                        } else {
+                            alert("添加失败！");
+                        }
+                    }
+                )
+
+            });
+        });
+    </script>
+</th:block>
+
+</body>
+</html>

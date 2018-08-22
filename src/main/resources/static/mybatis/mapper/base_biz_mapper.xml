@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xct.media.queuing.mapper.BaseBizMapper">
+    <resultMap id="baseBiz" type="com.xct.media.queuing.pojo.bo.BaseBizBo">
+        <id column="base_biz_id" property="base_biz_id"/>
+        <result column="base_biz_name" property="base_biz_name"/>
+        <result column="base_biz_num" property="base_biz_num"/>
+        <result column="hidden" property="hidden"/>
+    </resultMap>
+
+
+    <sql id="biz_column">
+        base_biz_id,
+        base_biz_name,
+        base_biz_num,
+        hidden
+    </sql>
+
+
+    <insert id="setBaseBizInfo" useGeneratedKeys="true" keyProperty="base_biz_id">
+        INSERT INTO evaluate_sys.base_biz (base_biz_name, base_biz_num)
+        VALUES (#{base_biz_name}, #{base_biz_num})
+    </insert>
+
+
+    <select id="queryByBaseBizInfo" resultMap="baseBiz">
+        SELECT
+        <include refid="biz_column"/>
+        FROM evaluate_sys.base_biz
+        WHERE base_biz_id = #{base_biz_id}
+    </select>
+
+
+    <select id="queryBaseBizInfo" resultMap="baseBiz">
+        SELECT
+        <include refid="biz_column"/>
+        FROM evaluate_sys.base_biz
+        <where>
+            <if test="base_biz_id > 0">
+                base_biz_id = #{base_biz_id}
+            </if>
+            <if test="base_biz_name != null">
+                and base_biz_name = #{base_biz_name}
+            </if>
+            <if test="base_biz_num != null">
+                and base_biz_num = #{base_biz_num}
+            </if>
+            <if test="hidden == 1">
+                and hidden = 1
+            </if>
+        </where>
+    </select>
+
+    <select id="queryBaseBizInfoSet" resultMap="baseBiz">
+        SELECT
+        <include refid="biz_column"/>
+        FROM evaluate_sys.base_biz
+        <where>
+            <if test="base_biz_id > 0">
+                base_biz_id = #{base_biz_id}
+            </if>
+            <if test="base_biz_name != null">
+                and base_biz_name = #{base_biz_name}
+            </if>
+            <if test="base_biz_num != null">
+                and base_biz_num = #{base_biz_num}
+            </if>
+            <if test="hidden == 1">
+                and hidden = 1
+            </if>
+        </where>
+    </select>
+
+    <update id="updateBaseBizInfo">
+        UPDATE evaluate_sys.base_biz
+        <set>
+            <if test="base_biz_name != null">
+                base_biz_name = #{base_biz_name},
+            </if>
+            <if test="base_biz_num != null">
+                base_biz_num = #{base_biz_num},
+            </if>
+            <if test="hidden == 0">
+                hidden = 0
+            </if>
+        </set>
+        WHERE
+        base_biz_id = #{base_biz_id}
+    </update>
+</mapper>

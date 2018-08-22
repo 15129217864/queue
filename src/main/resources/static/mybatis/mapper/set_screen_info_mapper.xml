@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xct.media.queuing.mapper.SetScreenInfoMapper">
+    <resultMap id="setScreenInfo" type="com.xct.media.queuing.pojo.bo.SetScreenInfoBo">
+        <id column="screen_id" property="screen_id"/>
+        <result column="base_biz_id" property="base_biz_id"/>
+        <result column="screen_mark" property="screen_mark"/>
+        <result column="screen_type" property="screen_type"/>
+        <result column="screen_num" property="screen_num"/>
+        <result column="screen_ip" property="screen_ip"/>
+        <result column="hidden" property="hidden"/>
+    </resultMap>
+
+    <sql id="setScreenInfo_col">
+        screen_id,
+        base_biz_id,
+        screen_mark,
+        screen_type,
+        screen_num,
+        screen_ip,
+        hidden
+    </sql>
+
+
+    <insert id="setSetScreenInfo" useGeneratedKeys="true" keyProperty="screen_id">
+        INSERT INTO
+        evaluate_sys.set_screen_info
+        (base_biz_id, screen_mark, screen_type, screen_num, screen_ip)
+        VALUES
+        (#{base_biz_id}, #{screen_mark}, #{screen_type}, #{screen_num}, #{screen_ip})
+    </insert>
+
+    <update id="updateSetScreenInfo">
+        UPDATE
+        evaluate_sys.set_screen_info
+        <set>
+            <if test="base_biz_id > 0">
+                base_biz_id = #{base_biz_id} ,
+            </if>
+            <if test="screen_mark != null and screen_mark !=''">
+                screen_mark = #{screen_mark} ,
+            </if>
+            <if test="screen_num !=null">
+                screen_num = #{screen_num},
+            </if>
+            <if test="screen_ip != null">
+                screen_ip = #{screen_ip},
+            </if>
+            <if test="screen_type !=null">
+                screen_type =#{screen_type},
+            </if>
+            <if test="hidden == 0 ">
+                hidden = 0
+            </if>
+        </set>
+        WHERE
+        screen_id = #{screen_id}
+    </update>
+
+    <select id="queryBySetScreenInfo" resultMap="setScreenInfo">
+        SELECT
+        <include refid="setScreenInfo_col"/>
+        FROM evaluate_sys.set_screen_info
+        <where>
+            <if test="screen_id > 0">
+                screen_id = #{screen_id}
+            </if>
+            <if test="base_biz_id > 0">
+                and base_biz_id = #{base_biz_id}
+            </if>
+            <if test="screen_mark != null and screen_mark !=''">
+                and screen_mark = #{screen_mark}
+            </if>
+            <if test="screen_num !=null">
+                and screen_num = #{screen_num}
+            </if>
+            <if test="screen_ip != null">
+                and screen_ip = #{screen_ip}
+            </if>
+            <if test="hidden ==1">
+                and hidden = 1
+            </if>
+        </where>
+    </select>
+
+
+    <select id="querySetScreenInfoSet" resultMap="setScreenInfo">
+        SELECT
+        <include refid="setScreenInfo_col"/>
+        FROM evaluate_sys.set_screen_info
+        <where>
+            <if test="screen_id > 0">
+                AND screen_id = #{screen_id}
+            </if>
+            <if test="base_biz_id > 0">
+                AND base_biz_id = #{base_biz_id}
+            </if>
+            <if test="screen_mark != null and screen_mark !=''">
+                AND screen_mark = #{screen_mark}
+            </if>
+            <if test="screen_num !=null">
+                AND screen_num = #{screen_num}
+            </if>
+            <if test="screen_ip != null">
+                AND screen_ip = #{screen_ip}
+            </if>
+            <if test="screen_type !=null">
+                AND screen_type =#{screen_type}
+            </if>
+            <if test="hidden == 1">
+                hidden = 1
+            </if>
+        </where>
+    </select>
+</mapper>

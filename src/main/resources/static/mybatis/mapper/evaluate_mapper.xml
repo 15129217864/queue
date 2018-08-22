@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xct.media.queuing.mapper.EvaluateMapper">
+    <resultMap id="evaluate" type="com.xct.media.queuing.pojo.bo.EvaluateBo">
+        <id property="evaluate_id" column="evaluate_id"/>
+        <result property="handle_biz_id" column="handle_biz_id"/>
+        <result property="evaluate_type" column="evaluate_type"/>
+        <result property="evaluate_status" column="evaluate_status"/>
+        <result property="evaluate_date" column="evaluate_date"/>
+        <result column="hidden" property="hidden"/>
+    </resultMap>
+
+    <resultMap id="statistics" type="com.xct.media.queuing.pojo.DataStatisticsPojo">
+        <result property="resultName" column="evaluate_type"/>
+        <result property="resultValue" column="number"/>
+    </resultMap>
+
+    <sql id="evaluate_col">
+        evaluate_id,
+        handle_biz_id,
+        evaluate_type,
+        evaluate_status,
+        evaluate_date
+    </sql>
+
+    <insert id="insertEvaluateData" useGeneratedKeys="true" keyColumn="evaluate_id">
+        INSERT
+        INTO evaluate_sys.evaluate
+        (handle_biz_id, evaluate_type, evaluate_status, evaluate_date)
+        VALUES (#{handle_biz_id}, #{evaluate_type}, #{evaluate_status}, #{evaluate_date})
+    </insert>
+
+    <select id="evaluateStatistics" resultMap="statistics">
+        SELECT evaluate_type,COUNT(evaluate_id) AS number
+        FROM evaluate
+        <where>
+            handle_biz_id
+            IN (SELECT handle_biz_id FROM evaluate_sys.handle_biz_record WHERE job_user_id = #{id})
+            <if test="type != 1">
+                /*日 月 年*/
+                AND
+                DATE_FORMAT(evaluate_date,
+                <if test="type == 0">'%Y-%m-%d'</if>
+                <if test="type == 2">'%Y-%m'</if>
+                <if test="type == 3">'%Y'</if>) = #{beginDate}
+            </if>
+            <if test="type == 1">
+                /*周*/
+                AND
+                DATE_FORMAT(evaluate_date,'%Y-%m-%d') &gt;= #{beginDate}
+                AND
+                DATE_FORMAT(evaluate_date,'%Y-%m-%d') &lt;= #{endDate}
+            </if>
+        </where>
+        GROUP BY evaluate_type
+    </select>
+</mapper>

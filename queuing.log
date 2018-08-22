@@ -1,0 +1,205 @@
+2018-07-21 10:29:20.785  INFO 11588 --- [main] c.xct.media.queuing.QueuingApplication   : Starting QueuingApplication on DESKTOP-KJD7U6N with PID 11588 (E:\qu\queue\queuing\target\classes started by asus in E:\qu\queue\queuing)
+2018-07-21 10:29:20.785  INFO 11588 --- [main] c.xct.media.queuing.QueuingApplication   : The following profiles are active: dev
+2018-07-21 10:29:21.895  INFO 11588 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2d127a61: startup date [Sat Jul 21 10:29:21 CST 2018]; root of context hierarchy
+2018-07-21 10:29:25.536  INFO 11588 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'queuingApplication' of type [com.xct.media.queuing.QueuingApplication$$EnhancerBySpringCGLIB$$d535285f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-07-21 10:29:25.552  INFO 11588 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 
+2018-07-21 10:29:30.763  INFO 11588 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8899 (http)
+2018-07-21 10:29:30.810  INFO 11588 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-21 10:29:30.810  INFO 11588 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.29
+2018-07-21 10:29:31.772  INFO 11588 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-21 10:29:31.772  INFO 11588 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 9908 ms
+2018-07-21 10:29:31.943  INFO 11588 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-07-21 10:29:31.943  INFO 11588 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-07-21 10:29:31.943  INFO 11588 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-07-21 10:29:31.943  INFO 11588 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-07-21 10:29:31.943  INFO 11588 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-07-21 10:29:34.192  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2d127a61: startup date [Sat Jul 21 10:29:21 CST 2018]; root of context hierarchy
+2018-07-21 10:29:34.255  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/common/background]}" onto public java.lang.Boolean com.xct.media.queuing.controller.BackgroundController.settingsBackGround(java.lang.String,java.lang.String)
+2018-07-21 10:29:34.270  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/baseConf/addStriped_screen],methods=[POST]}" onto public java.lang.String com.xct.media.queuing.controller.BaseInfoConfController.addStripedScreen(com.xct.media.queuing.pojo.bo.SetScreenInfoBo)
+2018-07-21 10:29:34.270  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/baseConf/addBizScreen],methods=[POST]}" onto public java.lang.String com.xct.media.queuing.controller.BaseInfoConfController.addBizScreen(com.xct.media.queuing.pojo.bo.SetBizScreenInfoBo)
+2018-07-21 10:29:34.270  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/baseConf/clearBizScreen],methods=[GET]}" onto public com.xct.media.queuing.util.RestApiMsg com.xct.media.queuing.controller.BaseInfoConfController.clearBizScreen(java.lang.String)
+2018-07-21 10:29:34.270  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/baseConf/queryBizScreen],methods=[POST]}" onto public com.xct.media.queuing.util.RestApiMsg<java.util.List<com.xct.media.queuing.pojo.SetBizScreenInfoPojo>> com.xct.media.queuing.controller.BaseInfoConfController.queryBizScreenList()
+2018-07-21 10:29:34.270  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/baseConf/settingsBizScreen],methods=[POST]}" onto public java.lang.String com.xct.media.queuing.controller.BaseInfoConfController.settingsBizScreen(com.xct.media.queuing.util.BaseScreenWrapper)
+2018-07-21 10:29:34.270  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/baseConf/modifyStriped_screen],methods=[POST]}" onto public com.xct.media.queuing.util.RestApiMsg com.xct.media.queuing.controller.BaseInfoConfController.modifyStripedScreen(com.xct.media.queuing.pojo.bo.SetScreenInfoBo)
+2018-07-21 10:29:34.270  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/baseConf/queryStripedScreen],methods=[POST]}" onto public com.xct.media.queuing.util.RestApiMsg<java.util.List<com.xct.media.queuing.pojo.bo.SetScreenInfoBo>> com.xct.media.queuing.controller.BaseInfoConfController.queryStripedScreen()
+2018-07-21 10:29:34.270  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/baseConf/updateBizScreen],methods=[POST]}" onto public com.xct.media.queuing.util.RestApiMsg com.xct.media.queuing.controller.BaseInfoConfController.modifyBizScreenSetting(com.xct.media.queuing.pojo.bo.SetBizScreenInfoBo)
+2018-07-21 10:29:34.270  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/baseConf/queryStripedScreenSetting],methods=[GET]}" onto public java.util.List<com.xct.media.queuing.pojo.bo.SetScreenInfoBo> com.xct.media.queuing.controller.BaseInfoConfController.queryStripedScreenSetting()
+2018-07-21 10:29:34.270  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/baseConf/clearStripedScreen],methods=[GET]}" onto public com.xct.media.queuing.util.RestApiMsg com.xct.media.queuing.controller.BaseInfoConfController.clearStripedScreen(java.lang.String)
+2018-07-21 10:29:34.270  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/baseConf/settingsStripedScreen],methods=[POST]}" onto public java.lang.String com.xct.media.queuing.controller.BaseInfoConfController.settingsStripedScreen(com.xct.media.queuing.util.BaseScreenWrapper)
+2018-07-21 10:29:34.286  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/biz/saveBaseBiz],methods=[POST]}" onto public com.xct.media.queuing.util.RestApiMsg com.xct.media.queuing.controller.BizInfoController.saveBaseBizInfo(java.lang.String,java.lang.String)
+2018-07-21 10:29:34.286  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/biz/clear],methods=[GET]}" onto public com.xct.media.queuing.util.RestApiMsg com.xct.media.queuing.controller.BizInfoController.clearBaseBize(java.lang.String)
+2018-07-21 10:29:34.286  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/biz/getBizScreen],methods=[GET]}" onto public java.util.List<com.xct.media.queuing.pojo.SetBizScreenInfoPojo> com.xct.media.queuing.controller.BizInfoController.getAllBizScreenInfo()
+2018-07-21 10:29:34.286  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/biz/getAllBaseBizInfo],methods=[GET]}" onto public com.xct.media.queuing.util.RestApiMsg<java.util.List<com.xct.media.queuing.pojo.bo.BaseBizBo>> com.xct.media.queuing.controller.BizInfoController.getAllBaseBizInfo()
+2018-07-21 10:29:34.286  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/biz/updateBaseBiz],methods=[POST]}" onto public com.xct.media.queuing.util.RestApiMsg com.xct.media.queuing.controller.BizInfoController.updateBaseBizInfo(com.xct.media.queuing.pojo.bo.BaseBizBo)
+2018-07-21 10:29:34.286  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/common/biz/upload],methods=[POST]}" onto public java.lang.String com.xct.media.queuing.controller.commons.CommonController.uploadBackground(java.lang.String,org.springframework.web.multipart.MultipartFile,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2018-07-21 10:29:34.286  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/common/load]}" onto public com.xct.media.queuing.util.ApiResult<java.util.List<java.lang.String>> com.xct.media.queuing.controller.commons.CommonController.listUploadedFiles(java.lang.String) throws java.io.IOException
+2018-07-21 10:29:34.286  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/common/biz/{type}/{filename:.+}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<org.springframework.core.io.Resource> com.xct.media.queuing.controller.commons.CommonController.getBizStorageImage(int,java.lang.String)
+2018-07-21 10:29:34.286  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/common/biz/{filename:.+}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<org.springframework.core.io.Resource> com.xct.media.queuing.controller.commons.CommonController.getJobUserStorageImage(java.lang.String)
+2018-07-21 10:29:34.286  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/evaluate/getData],methods=[POST]}" onto public java.util.List<com.xct.media.queuing.pojo.DataStatisticsPojo> com.xct.media.queuing.controller.EvaluateInfoController.getData(com.xct.media.queuing.pojo.DataStatisticsPojo)
+2018-07-21 10:29:34.286  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/handler/dashboard]}" onto public java.lang.String com.xct.media.queuing.controller.HandlerBizRecordController.queryDashboard()
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/user/getBaseUserInfo],methods=[GET]}" onto public java.util.List<com.xct.media.queuing.pojo.bo.JobUserBo> com.xct.media.queuing.controller.JobUserController.getUserInfo()
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/user/updateUserJob],methods=[POST]}" onto public com.xct.media.queuing.util.RestApiMsg com.xct.media.queuing.controller.JobUserController.updateUserInfo(com.xct.media.queuing.pojo.bo.JobUserBo,org.springframework.web.multipart.MultipartFile)
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/user/clear]}" onto public com.xct.media.queuing.util.RestApiMsg com.xct.media.queuing.controller.JobUserController.clearJobUser(java.lang.String)
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/user/getAll],methods=[GET]}" onto public java.util.List<com.xct.media.queuing.pojo.bo.JobUserBo> com.xct.media.queuing.controller.JobUserController.getAllUserInfo()
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/user/addUserInfo],methods=[POST]}" onto public com.xct.media.queuing.util.RestApiMsg com.xct.media.queuing.controller.JobUserController.addBaseJobUserInfo(com.xct.media.queuing.pojo.bo.JobUserBo,org.springframework.web.multipart.MultipartFile)
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/getQueueNum/{baseBizId}],methods=[POST]}" onto public com.xct.media.queuing.util.RestApiMsg<java.lang.String> com.xct.media.queuing.controller.QueuingUpController.getQueuingUpNum(int)
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/takeQueueNext/{baseBizId}],methods=[POST]}" onto public com.xct.media.queuing.util.RestApiMsg<com.xct.media.queuing.pojo.bo.QueueBo> com.xct.media.queuing.controller.QueuingUpController.takeQueuingUpNext(int)
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/evaluate/receive/{transactId}/{evaluateVal}],methods=[POST]}" onto public com.xct.media.queuing.util.RestApiMsg<java.lang.String> com.xct.media.queuing.controller.ReceiveEvaluateDataController.receiveData(int,java.lang.String)
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/court/push],methods=[POST]}" onto public com.xct.media.queuing.util.RestApiMsg<java.lang.String> com.xct.media.queuing.controller.ReceiveThirdDataController.receiveData(com.xct.media.queuing.pojo.CourtTakeNumPojo,javax.servlet.http.HttpServletRequest)
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/queue/court/evaluate],methods=[POST]}" onto public java.lang.String com.xct.media.queuing.controller.ReceiveThirdDataController.receiveTouchEvaluateData(com.xct.media.queuing.pojo.ReceiveTouchEvaluatePojo)
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[POST]}" onto public java.lang.String com.xct.media.queuing.controller.WelcomeController.login(java.lang.String,java.lang.String,org.springframework.ui.Model)
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/{page}]}" onto public java.lang.String com.xct.media.queuing.controller.WelcomeController.toPage(java.lang.String)
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String com.xct.media.queuing.controller.WelcomeController.welcome()
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-07-21 10:29:34.302  INFO 11588 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-07-21 10:29:34.333  INFO 11588 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-21 10:29:34.333  INFO 11588 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-21 10:29:34.380  INFO 11588 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : Detected @ExceptionHandler methods in exceptionAdviceController
+2018-07-21 10:29:34.395  INFO 11588 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-21 10:29:35.396  INFO 11588 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-07-21 10:29:35.662  INFO 11588 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2018-07-21 10:29:35.677  INFO 11588 --- [main] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-07-21 10:29:35.771  INFO 11588 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8899 (http)
+2018-07-21 10:29:35.802  INFO 11588 --- [main] c.xct.media.queuing.QueuingApplication   : Started QueuingApplication in 16.484 seconds (JVM running for 24.28)
+2018-07-21 10:30:30.563  INFO 11588 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-07-21 10:30:30.563  INFO 11588 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-07-21 10:30:30.587  INFO 11588 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 24 ms
+2018-07-21 10:30:45.773  INFO 11588 --- [http-nio-8899-exec-10] c.x.m.q.service.impl.JobUserServiceImpl  : json user string is ------------------- {'u_name':'admin','u_password':'5ff15c61b00bc783'}
+2018-07-21 10:30:45.949  INFO 11588 --- [http-nio-8899-exec-10] c.x.m.q.service.impl.JobUserServiceImpl  : json user info is ------------------- com.xct.media.queuing.pojo.AdminUserPojo@63973fc[
+  u_name=admin
+  u_password=5ff15c61b00bc783
+]
+2018-07-21 10:30:47.273  INFO 11588 --- [http-nio-8899-exec-1] c.x.m.q.c.HandlerBizRecordController     : query biz dashboard
+2018-07-21 10:30:59.088  INFO 11588 --- [http-nio-8899-exec-6] c.x.m.q.c.commons.CommonController       : get photo png, type [2] and filename [timg_20180720113505.png]
+2018-07-21 10:30:59.088  INFO 11588 --- [http-nio-8899-exec-3] c.x.m.q.c.commons.CommonController       : get photo png, type [2] and filename [c591c317f41b5db1183fb486b3791530.png]
+2018-07-21 10:30:59.119  INFO 11588 --- [http-nio-8899-exec-6] c.x.m.q.c.i.ExceptionAdviceController    : intercept 500 error. {}
+
+com.xct.media.queuing.storage.exception.StorageException: could not read file: timg_20180720113505.png
+	at com.xct.media.queuing.storage.impl.FileSystemStorageService.loadAsResource(FileSystemStorageService.java:96) ~[classes/:na]
+	at com.xct.media.queuing.controller.commons.CommonController.getBizStorageImage(CommonController.java:41) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_162]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_162]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_162]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_162]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133) ~[spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) [spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) [spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) [spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:109) [spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) [spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) [spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:496) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_162]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_162]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_162]
+
+2018-07-21 10:30:59.349 ERROR 11588 --- [http-nio-8899-exec-6] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8899-exec-6] Exception processing template "error/500": Error resolving template "common", template might not exist or might not be accessible by any of the configured Template Resolvers (error/500)
+2018-07-21 10:30:59.364 ERROR 11588 --- [http-nio-8899-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateInputException: Error resolving template "common", template might not exist or might not be accessible by any of the configured Template Resolvers (error/500)] with root cause
+
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template "common", template might not exist or might not be accessible by any of the configured Template Resolvers (error/500)
+	at org.thymeleaf.TemplateRepository.getTemplate(TemplateRepository.java:246) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.standard.fragment.StandardFragment.extractFragment(StandardFragment.java:202) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.standard.processor.attr.AbstractStandardFragmentHandlingAttrProcessor.computeFragment(AbstractStandardFragmentHandlingAttrProcessor.java:72) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.processor.attr.AbstractFragmentHandlingAttrProcessor.processAttribute(AbstractFragmentHandlingAttrProcessor.java:63) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.processor.attr.AbstractAttrProcessor.doProcess(AbstractAttrProcessor.java:87) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.processor.AbstractProcessor.process(AbstractProcessor.java:212) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.dom.Node.applyNextProcessor(Node.java:1017) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.dom.Node.processNode(Node.java:972) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.dom.NestableNode.computeNextChild(NestableNode.java:695) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.dom.NestableNode.doAdditionalProcess(NestableNode.java:668) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.dom.Node.processNode(Node.java:990) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.dom.NestableNode.computeNextChild(NestableNode.java:695) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.dom.NestableNode.doAdditionalProcess(NestableNode.java:668) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.dom.Node.processNode(Node.java:990) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.dom.Document.process(Document.java:93) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1155) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1060) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1011) ~[thymeleaf-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.spring4.view.ThymeleafView.renderFragment(ThymeleafView.java:335) ~[thymeleaf-spring4-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.thymeleaf.spring4.view.ThymeleafView.render(ThymeleafView.java:190) ~[thymeleaf-spring4-2.1.6.RELEASE.jar:2.1.6.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1286) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1041) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:984) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) ~[spring-webmvc-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) ~[tomcat-embed-websocket-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:109) ~[spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) ~[spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) ~[spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.16.RELEASE.jar:4.3.16.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:496) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_162]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_162]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.29.jar:8.5.29]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_162]
+

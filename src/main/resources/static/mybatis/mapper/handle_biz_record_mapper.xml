@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xct.media.queuing.mapper.HandleBizRecordMapper">
+    <resultMap id="handleBizRecord" type="com.xct.media.queuing.pojo.bo.HandleBizRecordBo">
+        <id column="handle_biz_id" property="handle_biz_id"/>
+        <result column="job_user_id" property="job_user_id"/>
+        <result column="base_biz_id" property="base_biz_id"/>
+        <result column="transact_biz_id" property="transact_biz_id"/>
+        <result column="handle_start_date" property="handle_start_date"/>
+        <result column="handle_end_date" property="handle_end_date"/>
+        <result column="hidden" property="hidden"/>
+    </resultMap>
+
+    <sql id="handleBizRecord_col">
+        handle_biz_id,
+        job_user_id,
+        base_biz_id,
+        transact_biz_id,
+        handle_start_date,
+        handle_end_date
+    </sql>
+
+
+    <insert id="setHandleBizRecord" useGeneratedKeys="true" keyProperty="handle_biz_id">
+        INSERT INTO
+        evaluate_sys.handle_biz_record
+        (job_user_id, base_biz_id, transact_biz_id, handle_start_date)
+        VALUES (#{job_user_id}, #{base_biz_id}, #{transact_biz_id}, #{handle_start_date})
+    </insert>
+
+    <update id="updateHandleBizRecord">
+        UPDATE evaluate_sys.handle_biz_record
+        <set>
+            <if test="handle_end_date != null">
+                handle_end_date = #{handle_end_date} ,
+            </if>
+        </set>
+        WHERE
+        handle_biz_id = #{handle_biz_id}
+    </update>
+
+
+    <select id="queryByHandleBizRecord" resultMap="handleBizRecord">
+        SELECT
+        <include refid="handleBizRecord_col"/>
+        FROM evaluate_sys.handle_biz_record
+        <where>
+            <if test="handle_biz_id > 0">
+                handle_biz_id = #{handle_biz_id}
+            </if>
+            <if test="transact_biz_id > 0">
+                transact_biz_id = #{transact_biz_id}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="queryHandleBizRecordSet" resultMap="handleBizRecord">
+        SELECT
+        <include refid="handleBizRecord_col"/>
+        FROM evaluate_sys.handle_biz_record
+        <where>
+            <if test="handle_biz_id > 0">
+                handle_biz_id = #{handle_biz_id}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="">
+
+    </select>
+</mapper>

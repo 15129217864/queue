@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xct.media.queuing.mapper.QueueMapper">
+    <resultMap id="queuingUP" type="com.xct.media.queuing.pojo.bo.QueueBo">
+        <id column="queue_id" property="queue_id"/>
+        <result column="base_biz_id" property="base_biz_id"/>
+        <result column="queue_num" property="queue_num"/>
+        <result column="queue_state" property="queue_state"/>
+        <result column="take_num_pic" property="take_num_pic"/>
+        <result column="call_num_time" property="call_num_time"/>
+    </resultMap>
+
+
+    <sql id="queue_column">
+        queue_id,
+        base_biz_id,
+        queue_num,
+        queue_state,
+        take_num_pic,
+        take_num_time,
+        call_num_time
+    </sql>
+
+
+    <insert id="setQueuingUp" useGeneratedKeys="true" keyProperty="queue_id">
+        INSERT INTO evaluate_sys.queue_tbl (base_biz_id, queue_num, queue_state, take_num_pic,take_num_time)
+        VALUES (#{base_biz_id}, #{queue_num}, #{queue_state}, #{take_num_pic},#{take_num_time})
+    </insert>
+
+
+    <select id="queryQueuingUpSet" resultMap="queuingUP">
+        SELECT
+        <include refid="queue_column"/>
+        FROM evaluate_sys.queue_tbl
+        <where>
+            <if test="queue_id > 0">
+                queue_id = #{queue_id}
+            </if>
+            <if test="base_biz_id > 0">
+                and base_biz_id = #{base_biz_id}
+            </if>
+            <if test="queue_num != null">
+                and queue_num = #{queue_num}
+            </if>
+            <if test="queue_state != null">
+                and queue_state = #{queue_state}
+            </if>
+        </where>
+    </select>
+
+
+    <update id="updateQueuingUp">
+        UPDATE evaluate_sys.queue_tbl
+        <set>
+            <if test="base_biz_id > 0">
+                base_biz_id = #{base_biz_id},
+            </if>
+            <if test="queue_num != null">
+                queue_num =#{queue_num},
+            </if>
+            <if test="queue_state != null">
+                queue_state =#{queue_state},
+            </if>
+            <if test="call_num_time != null">
+                call_num_time =#{call_num_time}
+            </if>
+        </set>
+        WHERE
+        queue_id = #{queue_id}
+    </update>
+</mapper>

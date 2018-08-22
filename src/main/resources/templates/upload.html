@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/layout">
+<meta charset="UTF-8">
+<title>背景图设置</title>
+<body>
+<li layout:fragment="basSet" class="active open">
+    <a href="#" class="dropdown-toggle">
+        <i class="menu-icon fa fa-list"></i>
+        <span class="menu-text">基础设置</span>
+
+        <b class="arrow fa fa-angle-down"></b>
+    </a>
+    <b class="arrow"></b>
+    <ul class="submenu">
+        <li class="">
+            <a href="/base_biz.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                基础业务设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="/set_screen_biz_info.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                业务屏设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="/set_screen_info.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                条屏设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+        <li class="active">
+            <a href="/upload.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                背景图设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="/background.html">
+                <i class="menu-icon fa fa-caret-right"></i>
+                背景图设置
+            </a>
+            <b class="arrow"></b>
+        </li>
+    </ul>
+</li>
+
+<div layout:fragment="content" class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">基础设置</a>
+                </li>
+                <li class="active">屏幕背景图上传</li>
+            </ul><!-- /.breadcrumb -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    背景图上传
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        在指定区域支持--预览、拖拽、删除、并自动上传文件
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div>
+                        <form th:action="@{/common/biz/upload}" class="dropzone well" id="dropzone">
+                            <input type="hidden" name="type" value="3"/>
+                            <div class="dz-default dz-message">
+                                <span>
+                                    <span class="bigger-150 bolder">
+                                        <i class="ace-icon fa fa-caret-right red"></i>
+                                        Drop files
+                                    </span>
+                                    to upload
+                                    <span class="smaller-80 grey">(or click)</span>
+                                    <br>
+                                    <i class="upload-icon ace-icon fa fa-cloud-upload blue fa-3x"></i>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
+
+<th:block layout:fragment="selfScript">
+    <script th:src="@{/assets/js/dropzone.min.js}"/>
+</th:block>
+
+<th:block layout:fragment="selfScript">
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+        // 文件上传方法
+        $("#dropzone").dropzone({
+            url: this.action,
+            addRemoveLinks: true,
+            dictRemoveLinks: "x",
+            dictCancelUpload: "x",
+            maxFiles: 1,
+            maxFilesize: 0.5,
+            acceptedFiles: ".png",
+            dictFileTooBig: "当前上传文档大小 {{filesize}} 超过 0.5M",
+            init: function () {
+                this.on("success", function (file, data) {
+                    console.log("File " + file.name + "uploaded");
+                    console.log("File " + data + "uploaded");
+                });
+                this.on("removedfile", function (file) {
+                    console.log("File " + file.name + "removed");
+                });
+            }
+        });
+    </script>
+</th:block>
+</body>
+</html>

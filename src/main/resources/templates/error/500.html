@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<div th:replace="common :: head"></div>
+
+<body>
+<!--<div th:replace="common :: navbar"></div>-->
+
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <div class="main-container-inner">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+
+        <!--<div th:replace="common :: sidebar"></div>-->
+
+        <div class="main-content">
+            <div th:replace="common :: breadcrumbs"></div>
+
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+
+                        <div class="error-container">
+                            <div class="well">
+                                <h1 class="grey lighter smaller">
+											<span class="blue bigger-125">
+												<i class="icon-random"></i>
+												500
+											</span>
+                                    服务发生异常
+                                </h1>
+
+                                <hr/>
+                                <h3 class="lighter smaller">
+                                    我们将会
+                                    <i class="icon-wrench icon-animated-wrench bigger-125"></i>
+                                    修复它！
+                                </h3>
+
+                                <div class="space"></div>
+
+                                <div>
+                                    <h4 class="lighter smaller">请试着进行以下操作:</h4>
+
+                                    <ul class="list-unstyled spaced inline bigger-110 margin-15">
+                                        <li>
+                                            <i class="icon-hand-right blue"></i>
+                                            重启服务
+                                        </li>
+
+                                        <li>
+                                            <i class="icon-hand-right blue"></i>
+                                            通知管理人员
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <hr/>
+                                <div class="space"></div>
+
+                                <div class="center">
+                                    <a href="#" onclick="window.history.go(-1); return false;" class="btn btn-grey">
+                                        <i class="icon-arrow-left"></i>
+                                        返回
+                                    </a>
+
+                                    <a href="/login" class="btn btn-primary">
+                                        <i class="icon-dashboard"></i>
+                                        登录
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+
+    </div><!-- /.main-container-inner -->
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+
+<div th:replace="common :: js"></div>
+</body>
+</html>
+

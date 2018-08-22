@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<div th:replace="common :: head"></div>
+
+<body>
+<div th:replace="common :: navbar"></div>
+
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed');
+        } catch (e) {
+        }
+    </script>
+
+    <div class="main-container-inner">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+
+        <div th:replace="common :: sidebar"></div>
+
+        <div class="main-content">
+            <div th:replace="common :: breadcrumbs"></div>
+
+            <div class="page-content">
+                <!--						<div class="page-header">
+                                            <h1>
+                                                首页
+                                                <small>
+                                                    <i class="icon-double-angle-right"></i>
+                                                     查看
+                                                </small>
+                                            </h1>
+                                        </div>--><!-- /.page-header -->
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+
+                        <div class="alert alert-block alert-success">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <i class="icon-remove"></i>
+                            </button>
+
+                            <i class="icon-ok green"></i>
+
+                            欢迎使用
+                            <strong class="green">
+                                xct 讯传排队叫号后台管理系统
+                            </strong>
+                        </div>
+
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+
+    </div><!-- /.main-container-inner -->
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+
+<div th:replace="common :: js"></div>
+<script th:inline="javascript">
+    $("#index").addClass("active");
+    localStorage.removeItem("active");
+</script>
+</body>
+</html>
+

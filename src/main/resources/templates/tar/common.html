@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:fragment="head">
+    <meta charset="utf-8"/>
+    <title>xct 讯传排队叫号系统</title>
+    <meta name="keywords" content="xct 讯传排队叫号系统"/>
+    <meta name="description" content="xct 讯传排队叫号系统"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/png" th:href="@{/image/logo/logo.png}"/>
+    <link rel="apple-touch-icon-precomposed" th:href="@{/image/logo/logo.png}"/>
+    <!-- basic styles -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"/>
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" th:href="@{/css/font-awesome-ie7.min.css}"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+
+    <!-- fonts -->
+
+    <link rel="stylesheet" th:href="@{/css/other.css}"/>
+    <link rel="stylesheet" th:href="@{/css/jquery.gritter.css}"/>
+    <!-- ace styles -->
+
+    <link rel="stylesheet" th:href="@{/css/ace.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/ace-rtl.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/ace-skins.min.css}"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" th:href="@{/css/ace-ie.min.css}"/>
+    <![endif]-->
+
+    <!-- ace settings handler -->
+
+    <script th:src="@{/js/ace-extra.min.js}"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script th:src="@{/js/html5shiv.js}"></script>
+    <script th:src="@{/js/respond.min.js}"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="navbar navbar-default" id="navbar" th:fragment="navbar">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('navbar', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <small>
+                    <img th:src="@{/image/logo/xct_logo.png}" style="height: 25px"/>
+                    排队叫号管理系统
+                </small>
+            </a><!-- /.brand -->
+        </div><!-- /.navbar-header -->
+
+        <div class="navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+
+                <li class="light-blue">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <span class="user-info" id="user_name">
+									<small>欢迎！</small>
+									Admin
+								</span>
+
+                        <i class="icon-caret-down"></i>
+                    </a>
+
+                    <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+
+                        <!--<li class="divider"></li>-->
+
+                        <li>
+                            <a href="javascript:logout();">
+                                <i class="icon-off"></i>
+                                退出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul><!-- /.ace-nav -->
+        </div><!-- /.navbar-header -->
+    </div><!-- /.container -->
+</div>
+
+<div class="sidebar" id="sidebar" th:fragment="sidebar">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('sidebar', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <ul class="nav nav-list">
+        <li id="index">
+            <a th:href="@{/templates/tar/index.html}" style="text-align:center">
+                <span class="menu-text"> 首页 </span>
+            </a>
+        </li>
+
+
+        <li id="job_user">
+            <a onclick="goTo(this);" th:href="@{/templates/tar/job_user.html}" class="dropdown-toggle"
+               style="text-align:center">
+
+                <span class="menu-text"> 人员配置 </span>
+
+                <!--
+                                <b class="arrow icon-angle-down"></b>
+                -->
+            </a>
+        </li>
+
+        <li id="biz_base">
+            <a onclick="goTo(this);" th:href="@{/templates/tar/biz_base.html}" class="dropdown-toggle"
+               style="text-align:center">
+
+                <span class="menu-text"> 业务基础 </span>
+
+                <!--
+                                <b class="arrow icon-angle-down"></b>
+                -->
+            </a>
+        </li>
+
+        <li id="screen">
+            <a href="#" class="dropdown-toggle" style="text-align:center">
+
+                <span class="menu-text"> 屏配置 </span>
+
+                <b class="arrow icon-angle-down"></b>
+
+            </a>
+
+            <ul class="submenu" style="text-align:center">
+                <li id="biz_setting">
+                    <a onclick="goTo(this);" th:href="@{/templates/tar/biz_setting.html}" style="padding-left: 0px">
+                        <i class="icon-double-angle-right"></i>
+                        业务屏
+                    </a>
+                </li>
+
+                <li id="screen_setting">
+                    <a onclick="goTo(this);" th:href="@{/templates/tar/screen_setting.html}" style="padding-left: 0px">
+                        <i class="icon-double-angle-right"></i>
+                        横条屏
+                    </a>
+                </li>
+                <li id="upload">
+                    <a onclick="goTo(this);" th:href="@{/templates/upload.html}" style="padding-left: 0px">
+                        <i class="icon-double-angle-right"></i>
+                        set background
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li id="data_statistics">
+            <a onclick="goTo(this);" th:href="@{/templates/tar/data_statistics.html}" class="dropdown-toggle"
+               style="text-align:center">
+
+                <span class="menu-text"> 数据统计 </span>
+
+                <!--
+                                <b class="arrow icon-angle-down"></b>
+                -->
+            </a>
+        </li>
+
+    </ul><!-- /.nav-list -->
+
+    <div class="sidebar-collapse" id="sidebar-collapse">
+        <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+    </div>
+
+    <script type="text/javascript">
+        try {
+            ace.settings.check('sidebar', 'collapsed')
+        } catch (e) {
+        }
+    </script>
+</div>
+
+<div th:fragment="js">
+    <!-- basic scripts -->
+    <!--[if !IE]> -->
+    <script th:src="@{/js/jquery-2.0.3.min.js}"></script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script th:src="@{/js/jquery-2.0.3.min.js}"></script>
+    <![endif]-->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        //获取服务器ip
+        ip = [[${#httpServletRequest.getServerName()}]];
+        //获取端口
+        port = [[${#httpServletRequest.getServerPort()}]] + "";
+        //得到工程名 只有在tomcat中有值
+        path = [[${#httpServletRequest.getContextPath()}]];
+
+        pt = (typeof port === "undefined" || port == "") ? "" : ":" + port + "";
+
+        root = "http://" + ip + "" + pt + "" + path;
+
+        function setLoginName() {
+            var info = localStorage.getItem("user_info");
+            if (info != null && info != "") {
+                var user = JSON.parse(info);
+                $("#user_name").html("<small>欢迎！</small>" + user.user_name);
+            } else {
+                alert("您的登录信息被浏览器清理，请重新登录！");
+                window.location.href = root + "/login";
+            }
+        }
+        /*]]>*/
+
+        setLoginName();
+
+        function logout() {
+            localStorage.removeItem("user_info");
+            window.location.href = root + "/login";
+        }
+
+        function goTo(obj) {
+            var $li = $(obj).parent("li");
+            //alert($li.attr("id"));
+            localStorage.setItem("active", $li.attr("id"));
+        }
+
+        function menuFlag() {
+            var id = localStorage.getItem("active");
+            $("#" + id + "").addClass("active");
+            if (id === "biz_setting" || id === "screen_setting") {
+                $("#screen").addClass("open active");
+            }
+        }
+        menuFlag();
+    </script>
+    <!--[if !IE]> -->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        window.jQuery || document.write("<script th:src='@{/js/jquery-2.0.3.min.js}'>" + "<script>");
+        /*]]>*/
+    </script>
+    <!-- <![endif]-->
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        if ("ontouchend" in document) document.write("<script th:src='@{/js/jquery.mobile.custom.min.js}'>" + "<" + "script>");
+        /*]]>*/
+    </script>
+
+    <!--[if IE]>
+    <script th:inline="javascript">
+        document.write("<script th:src='@{/js/jquery-1.10.2.min.js}'>" + "<script>");
+    </script>
+    <![endif]-->
+
+
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/typeahead-bs2.min.js}"></script>
+    <!-- page specific plugin scripts -->
+
+    <!--[if lte IE 8]>
+    <script th:src="@{/js/excanvas.min.js}"></script>
+    <![endif]-->
+
+    <!-- ace scripts -->
+    <script th:src="@{/js/ace-elements.min.js}"></script>
+    <script th:src="@{/js/ace.min.js}"></script>
+    <script th:src="@{/js/jquery.gritter.min.js}"></script>
+
+    <div style="display:none">
+        <script th:src='@{/js/other.js}' language='JavaScript' charset='gb2312'></script>
+    </div>
+</div>
+</body>
+</html>
